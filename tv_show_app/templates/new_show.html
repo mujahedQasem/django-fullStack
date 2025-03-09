@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>New - Show </title>
+</head>
+<body>
+    <div class="main d-flex flex-column m-5 p-4 justify-content-evenly align-items-xl-center border border-primary shadow-lg p-3 mb-5 bg-body rounded" >
+
+        <h1 class="m-2 p-3">Add a New Show</h1>
+        <form action="{% url 'new_show' %}" method="post" class="p-4 d-flex flex-column border  border-info shadow p-3 mb-5 bg-body rounded">
+          {% csrf_token %}
+            <div class="mb-3 p-2">
+                <label for="formGroupExampleInput" class="form-label">Title</label>
+                <input type="text" required name="title" class="form-control" id="formGroupExampleInput" placeholder="Title here ..">
+              </div>
+              <div class="row p-2">
+                <div class="col p-2">
+                    <label for="network">Network</label>
+                  <input type="text" required name="network" class="form-control" placeholder="network" id="network">
+                </div>
+                <div class="col p-2">
+                    <label for="date">Date</label>
+                  <input type="date" required name="date" class="form-control" id="date">
+                </div>
+              </div>
+              <div class="form-floating p-2">
+                <textarea class="form-control" required name="desc" placeholder="Description" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Description</label>
+              </div>
+              <button type="submit" class="btn btn-outline-secondary p-2 align-self-center m-3">Create</button>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+          {% for massage in messages %}
+            <li {% if messages.tags %} class="{{messages.tags}}" {% endif %}>{{massage}}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <a href="{% url 'shows' %}">Go Back</a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show {{selected.id}}</title>
+</head>
+<body>
+    <h1>Tv Show {{selected.id}}</h1>
+    <p>Title : {{selected.title}}</p>
+    <p>Network : {{selected.network}}</p>
+    <p>Relase Date : {{selected.release_date}}</p>
+    <p>Description : {{selected.desc}}</p>
+    <p>Last updated At : {{selected.updated_at}}</p>
+    <a href="{% url 'edit' selected.id %}">| Edit</a>
+    <a href="{% url 'delete' selected.id %}">| Delete</a>
+    <a href="{% url 'shows' %}">Go Back</a>
+</body>
+</html>
